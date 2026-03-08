@@ -2,13 +2,17 @@ pipeline {
     agent any
 
     stages {
+        sh '''
         stage('Hello') {
+            
             steps {
                 mkdir /dir3
                 cd /dir3
                 touch filetext
                 cd ..
             }
+        }
+        stage('creating 2nd directory"') {
             steps{
                //create another directory named dir2
                mkdir /dir4
@@ -17,7 +21,7 @@ pipeline {
 
             }
         }
-
+    sh '''
        
     }
 }
