@@ -4,14 +4,20 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo 'Hello '
+                mkdir /dir3
+                cd /dir3
+                touch filetext
+                cd ..
+            }
+            steps{
+               //create another directory named dir2
+               mkdir /dir4
+                //move filetext from dir1 to dir2
+                cp /dir3/filetext /dir4/
+
             }
         }
 
-        stage('Second Step') {
-            steps {
-                echo 'This is the second stage'
-            }
-        }
+       
     }
 }
