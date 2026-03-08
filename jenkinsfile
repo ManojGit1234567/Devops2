@@ -2,26 +2,32 @@ pipeline {
     agent any
 
     stages {
-        sh '''
+        
         stage('Hello') {
             
             steps {
-                mkdir /dir3
+                sh '''
+                mkdir -p /dir3
                 cd /dir3
                 touch filetext
                 cd ..
+
+                '''
             }
         }
-        stage('creating 2nd directory"') {
+        stage('creating 2nd directory') {
             steps{
-               //create another directory named dir2
-               mkdir /dir4
-                //move filetext from dir1 to dir2
+                sh '''
+               # create another directory named dir2
+               mkdir -p /dir4
+                # move filetext from dir1 to dir2
                 cp /dir3/filetext /dir4/
+
+                '''
 
             }
         }
-    sh '''
+
        
     }
 }
